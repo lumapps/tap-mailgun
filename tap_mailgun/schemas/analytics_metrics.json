@@ -1,0 +1,57 @@
+{
+  "type": "object",
+  "properties": {
+    "time_value": {
+      "type": ["null", "string"],
+      "format": "date-time",
+      "description": "The timestamp value from the 'time' dimension, used for replication."
+    },
+    "time": {
+      "type": ["null", "string"],
+      "format": "date-time",
+      "description": "The value of the 'time' dimension if requested."
+    },
+    "accepted_incoming_count": {
+      "type": ["null", "integer"],
+      "description": "Count of incoming messages accepted."
+    },
+    "accepted_outgoing_count": {
+      "type": ["null", "integer"],
+      "description": "Count of outgoing messages accepted."
+    },
+    "accepted_count": {
+      "type": ["null", "integer"],
+      "description": "Total count of messages accepted."
+    },
+    "delivered_smtp_count": {
+      "type": ["null", "integer"],
+      "description": "Count of messages delivered via SMTP."
+    },
+    "delivered_http_count": {
+      "type": ["null", "integer"],
+      "description": "Count of messages delivered via HTTP."
+    },
+    "delivered_optimized_count": {
+      "type": ["null", "integer"],
+      "description": "Count of messages delivered after optimization."
+    },
+    "delivered_count": {
+      "type": ["null", "integer"],
+      "description": "Total count of messages delivered."
+    },
+    "opened_count": {
+      "type": ["null", "integer"],
+      "description": "Count of messages opened."
+    },
+    "clicked_count": {
+      "type": ["null", "integer"],
+      "description": "Count of messages clicked."
+    },
+    "clicked_rate": {
+      "type": ["null", "string"],
+      "description": "Click rate for messages (represented as a string)."
+    }
+  },
+  "additionalProperties": true,
+  "description": "Schema for Mailgun Analytics Metrics records after transformation."
+}
