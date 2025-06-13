@@ -1,0 +1,80 @@
+version: 1
+default_environment: dev
+project_id: tap-mailgun
+
+environments:
+- name: dev
+- name: staging
+- name: prod
+
+plugins:
+  extractors:
+  - name: tap-mailgun
+    namespace: tap_mailgun
+    pip_url: -e .
+    executable: tap-mailgun
+    capabilities:
+    - catalog
+    - discover
+    - state
+    settings:
+    - name: api_key
+      kind: password       # To mark as sensitive
+      label: API Key
+      description: Your Mailgun API Key.
+      sensitive: true
+    - name: base_url
+      value: https://api.mailgun.net
+      label: Base URL
+      description: Mailgun API Base URL (e.g., https://api.mailgun.net or 
+        https://api.eu.mailgun.net). Do not include /v3.
+    - name: start_date
+      kind: string       # RFC 2822 is strictly needed by the tap and Meltano UI doesn't support it directly
+      label: Start Date (Analytics)
+      description: Start date for analytics metrics (RFC 2822 format, e.g., 
+        'Mon, 01 Jan 2024 00:00:00 +0000'). Used if Analytics Duration is not 
+        set.
+    - name: end_date
+      kind: string
+      label: End Date (Analytics)
+      description: End date for analytics metrics (RFC 2822 format, e.g., 'Tue, 
+        31 Dec 2024 23:59:59 +0000').
+
+        # Analytics Metrics Stream specific settings
+    - name: analytics_resolution
+      label: 'Analytics: Resolution'
+      description: Resolution for analytics metrics ('day', 'hour', or 'month').
+    - name: analytics_duration
+      kind: string       # Optional
+      label: 'Analytics: Duration'
+      description: Duration for analytics metrics (e.g., '1d', '7d', '1m'). 
+        Overwrites Start Date if provided.
+    - name: analytics_dimensions
+      kind: array
+      label: 'Analytics: Dimensions'
+      description: Array of dimensions for analytics metrics (e.g., ["time", 
+        "tag"]). At least 'time' is recommended.
+    - name: analytics_metrics
+      kind: array
+      label: 'Analytics: Metrics'
+      description: Array of metrics to retrieve (e.g., ["delivered_count", 
+        "opened_count"]).
+    - name: analytics_filters
+      kind: array
+      label: 'Analytics: Filters'
+      description: 'An array of filter objects. Each object should have "attribute", "comparator", and "value" keys (e.g., [{"attribute": "domain", "comparator": "=", "value": "example.com"}]). Refer to Mailgun API documentation for filter structure.'
+      value: []
+    - name: analytics_include_subaccounts
+      kind: boolean
+      value: true
+      label: 'Analytics: Include Subaccounts'
+      description: Include stats from all subaccounts for analytics.
+    - name: analytics_include_aggregates
+      kind: boolean
+      value: true
+      label: 'Analytics: Include Aggregates'
+      description: Include top-level aggregate metrics for analytics.
+  loaders:
+  - name: target-jsonl
+    variant: andyh1203
+    pip_url: target-jsonl
