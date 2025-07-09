@@ -53,7 +53,10 @@ class MailgunStream(RESTStream):
             # The tap does not need to pre-calculate 'start' in this case.
 
         payload["dimensions"] = self.config.get("analytics_dimensions")
-        payload["metrics"] = self.config.get("analytics_metrics")
+        if self.name == "analytics_usage_metrics":
+            payload["metrics"] = self.config.get("analytics_usage_metrics")
+        else:
+            payload["metrics"] = self.config.get("analytics_metrics")
         payload["filter"] = self.config.get("analytics_filters")
         payload["include_subaccounts"] = self.config.get("analytics_include_subaccounts")
         payload["include_aggregates"] = self.config.get("analytics_include_aggregates")

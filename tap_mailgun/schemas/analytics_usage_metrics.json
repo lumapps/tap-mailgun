@@ -1,0 +1,65 @@
+{
+  "type": "object",
+  "properties": {
+    "time_value": {
+      "type": ["null", "string"],
+      "format": "date-time",
+      "description": "The timestamp value from the 'time' dimension, used for replication."
+    },
+    "time": {
+      "type": ["null", "string"],
+      "format": "date-time",
+      "description": "The value of the 'time' dimension if requested."
+    },
+    "processed_count": {
+      "type": ["null", "integer"]
+    },
+    "email_validation_count": {
+      "type": ["null", "integer"]
+    },
+    "email_validation_public_count": {
+      "type": ["null", "integer"]
+    },
+    "email_validation_valid_count": {
+      "type": ["null", "integer"]
+    },
+    "email_validation_single_count": {
+      "type": ["null", "integer"]
+    },
+    "email_validation_bulk_count": {
+      "type": ["null", "integer"]
+    },
+    "email_validation_list_count": {
+      "type": ["null", "integer"]
+    },
+    "email_validation_mailgun_count": {
+      "type": ["null", "integer"]
+    },
+    "email_validation_mailjet_count": {
+      "type": ["null", "integer"]
+    },
+    "email_preview_count": {
+      "type": ["null", "integer"]
+    },
+    "email_preview_failed_count": {
+      "type": ["null", "integer"]
+    },
+    "link_validation_count": {
+      "type": ["null", "integer"]
+    },
+    "link_validation_failed_count": {
+      "type": ["null", "integer"]
+    },
+    "seed_test_count": {
+      "type": ["null", "integer"]
+    },
+    "ip_blocklist_monitoring_count": {
+      "type": ["null", "integer"]
+    },
+    "domain_blocklist_monitoring_count": {
+      "type": ["null", "integer"]
+    }
+  },
+  "additionalProperties": true,
+  "description": "Schema for Mailgun Analytics Usage Metrics records after transformation."
+}
