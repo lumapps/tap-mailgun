@@ -23,6 +23,7 @@ class TapMailgun(Tap):
         Property("analytics_duration", StringType, required=False),
         Property("analytics_dimensions", ArrayType(wrapped_type=StringType), required=True),
         Property("analytics_metrics", ArrayType(wrapped_type=StringType), required=True),
+        Property("analytics_usage_metrics", ArrayType(wrapped_type=StringType), required=True),
         Property(
             "analytics_filters",
             ArrayType(ObjectType(
@@ -40,7 +41,8 @@ class TapMailgun(Tap):
     def discover_streams(self) -> list:
         """Return a list of discovered streams."""
         return [
-            streams.MailgunMetricsStream(self)
+            streams.MailgunMetricsStream(self),
+            streams.MailgunUsageMetricsStream(self)
         ]
 
 if __name__ == "__main__":
