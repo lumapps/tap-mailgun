@@ -29,16 +29,16 @@ plugins:
       description: Mailgun API Base URL (e.g., https://api.mailgun.net or 
         https://api.eu.mailgun.net). Do not include /v3.
     - name: start_date
-      kind: string       # RFC 2822 is strictly needed by the tap and Meltano UI doesn't support it directly
+      kind: string       # ISO format is expected as input, automatically converted to RFC 2822 for API
       label: Start Date (Analytics)
-      description: Start date for analytics metrics (RFC 2822 format, e.g., 
-        'Mon, 01 Jan 2024 00:00:00 +0000'). Used if Analytics Duration is not 
+      description: Start date for analytics metrics (ISO format, e.g.,
+        '2024-01-01T00:00:00' or '2024-01-01'). Used if Analytics Duration is not 
         set.
     - name: end_date
       kind: string
       label: End Date (Analytics)
-      description: End date for analytics metrics (RFC 2822 format, e.g., 'Tue, 
-        31 Dec 2024 23:59:59 +0000').
+      description: End date for analytics metrics (ISO format, e.g.,
+        '2024-12-31T23:59:59' or '2024-12-31').
 
         # Analytics Metrics Stream specific settings
     - name: analytics_resolution
