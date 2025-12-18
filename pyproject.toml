@@ -1,6 +1,6 @@
 [project]
 name = "tap-mailgun"
-version = "0.1.0"
+version = "0.2.0"
 description = "Singer tap for extracting data from Mailgun API"
 authors = [{ name = "Jonathan Perron", email = "jonathan.perron@lumapps.com" }]
 requires-python = ">=3.10"
@@ -14,8 +14,9 @@ classifiers = [
     "Intended Audience :: Developers",
 ]
 dependencies = [
-    "singer-sdk~=0.46.4",
-    "requests~=2.32.3",
+    "singer-sdk~=0.53.4",
+    "requests~=2.32.5",
+    "urllib3~=2.6.2",
 ]
 
 [project.urls]
