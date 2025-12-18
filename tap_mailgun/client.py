@@ -148,7 +148,7 @@ class MailgunStream(RESTStream):
         
         Flattens dimensions and metrics into a single record.
         Extracts 'time_value' from the 'time' dimension for replication.
-        """       
+        """
         processed_record: Dict[str, Any] = {}
         time_dim_value: Optional[str] = None
 
@@ -180,5 +180,5 @@ class MailgunStream(RESTStream):
         
         for metric_name, metric_value in metrics_data.items():
             processed_record[str(metric_name)] = metric_value
-                
+
         return processed_record
