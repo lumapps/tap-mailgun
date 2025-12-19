@@ -1,18 +1,10 @@
-[build-system]
-requires = [
-    "hatchling>=1,<2",
-]
-build-backend = "hatchling.build"
-
 [project]
 name = "tap-mailgun"
-version = "0.1.0"
+version = "0.2.0"
 description = "Singer tap for extracting data from Mailgun API"
-authors = [
-  { name="Jonathan Perron", email="jonathan.perron@lumapps.com" },
-]
-readme = "README.md"
+authors = [{ name = "Jonathan Perron", email = "jonathan.perron@lumapps.com" }]
 requires-python = ">=3.10"
+readme = "README.md"
 classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
@@ -22,13 +14,20 @@ classifiers = [
     "Intended Audience :: Developers",
 ]
 dependencies = [
-    "singer-sdk~=0.46.4",
-    "requests~=2.32.3",
+    "singer-sdk~=0.53.4",
+    "requests~=2.32.5",
+    "urllib3~=2.6.2",
 ]
+
+[project.urls]
+Homepage = "https://github.com/lumapps/tap-mailgun"
+Repository = "https://github.com/lumapps/tap-mailgun"
 
 [project.scripts]
 tap-mailgun = "tap_mailgun:TapMailgun.cli"
 
-[project.urls]
-Homepage = "https://github.com/lumapps/tap-mailgun" # Replace with your actual URL
-Repository = "https://github.com/lumapps/tap-mailgun" # Replace with your actual URL
+[build-system]
+requires = [
+    "hatchling>=1,<2",
+]
+build-backend = "hatchling.build"
